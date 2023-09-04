@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Item } from './schemas/items.schemas';
 import {  Model } from 'mongoose';
-import { CreateItemDto, UpdateItemDto } from './dto/items.dto';
+import { CreateItemDto, ImageDto, UpdateItemDto } from './dto/items.dto';
 
 @Injectable()
 export class ItemsService {
@@ -29,5 +29,12 @@ export class ItemsService {
    async updateItem(id:string, updateItemDto: UpdateItemDto): Promise <Item>{
         const itemUpdate = await this.itemModel.findByIdAndUpdate({_id:id}, updateItemDto,{new:true})
         return itemUpdate
+   }
+
+   async addImageToItem(id:string, imagedto:ImageDto) : Promise <Item>{
+     const existingItem = await this.itemModel.findById(id)
+     if(!existingItem) return ;
+     existingItem.image.push(imagedto)
+     return existingItem.save()
    }
 }
