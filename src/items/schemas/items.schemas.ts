@@ -9,6 +9,30 @@ export class Item{
     name:string;
     
     @Prop()
+    set:string;
+
+    @Prop()
+    type:string;
+
+    @Prop([{
+        url: String,
+        level: Number
+    }])
+    image: { url: string; level: number }[];
+
+    @Prop()
+    defense:number
+
+    @Prop()
+    durability: number
+
+    @Prop()
+    attackSpeed: number
+
+    @Prop()
+    class: string;
+
+    @Prop()
     level:number;
     
     @Prop()
@@ -18,20 +42,13 @@ export class Item{
     agi:number;
     
     @Prop()
-    type:string;
-
-    @Prop()
-    image:string;
-
-    @Prop()
-    set:string;
-
-    @Prop()
     upgradeStr:number;
 
     @Prop()
     upgradeAgi:number;
 
+    @Prop()
+    upgradeDefense: number;
     
 }
 
