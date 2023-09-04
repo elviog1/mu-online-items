@@ -1,9 +1,21 @@
-import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
 
 export enum ItemType {
-    Weapon = 'Weapon',
-    Armor = 'Armor',
+    Normal = 'Normal',
+    Excellent = 'Excellent',
 }
+
+export class ImageDto {
+    @IsString()
+    @IsNotEmpty()
+    url: string;
+
+    @IsNumber()
+    @IsNotEmpty()
+    level: number;
+}
+
 export class CreateItemDto{
     @IsNotEmpty()
     @IsString()
@@ -25,9 +37,26 @@ export class CreateItemDto{
     @IsEnum(ItemType)
     type: ItemType
     
+    @IsNotEmpty()
+    @ValidateNested()
+    @Type(() => ImageDto)
+    image: ImageDto[];
+
+    @IsNumber()
+    @IsNotEmpty()
+    defense:number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    durability:number;
+
+    @IsNumber()
+    @IsOptional()
+    attackSpeed:number
+
     @IsString()
     @IsNotEmpty()
-    image:string;
+    class:string
 
     @IsString()
     set:string;
@@ -39,6 +68,10 @@ export class CreateItemDto{
     @IsNumber()
     @IsNotEmpty()
     upgradeAgi:number;
+
+    @IsNumber()
+    @IsNotEmpty()
+    upgradeDefense:number;
 
 
 }
@@ -65,9 +98,26 @@ export class UpdateItemDto{
     @IsEnum(ItemType)
     type: ItemType
 
+    @IsOptional()
+    @ValidateNested()
+    @Type(() => ImageDto)
+    image: ImageDto[];
+
+    @IsNumber()
+    @IsOptional()
+    defense:number;
+
+    @IsNumber()
+    @IsOptional()
+    durability:number;
+
+    @IsNumber()
+    @IsOptional()
+    attackSpeed:number
+
     @IsString()
     @IsOptional()
-    image:string;
+    class:string
 
     @IsString()
     @IsOptional()
@@ -80,4 +130,8 @@ export class UpdateItemDto{
     @IsNumber()
     @IsOptional()
     upgradeAgi:number;
+
+    @IsNumber()
+    @IsOptional()
+    upgradeDefense:number;
 }
