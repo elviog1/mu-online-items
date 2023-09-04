@@ -14,10 +14,7 @@ export class Item{
     @Prop()
     type:string;
 
-    @Prop([{
-        url: String,
-        level: Number
-    }])
+    @Prop()
     image: { url: string; level: number }[];
 
     @Prop()
@@ -30,7 +27,7 @@ export class Item{
     attackSpeed: number
 
     @Prop()
-    class: string;
+    class: string[];
 
     @Prop()
     level:number;

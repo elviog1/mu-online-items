@@ -9,7 +9,7 @@ export interface Item {
     defense:number;
     durability:number;
     attackSpeed:number;
-    class:string;
+    class:string[];
     upgradeStr:number;
     upgradeAgi:number;
     upgradeDefense:number;

@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
+import { IsArray, IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, ValidateNested } from "class-validator";
 
 export enum ItemType {
     Normal = 'Normal',
@@ -54,9 +54,10 @@ export class CreateItemDto{
     @IsOptional()
     attackSpeed:number
 
-    @IsString()
-    @IsNotEmpty()
-    class:string
+    @IsArray()
+    @IsString({each:true})
+    @IsNotEmpty({each:true})
+    class:string[]
 
     @IsString()
     set:string;
@@ -115,9 +116,10 @@ export class UpdateItemDto{
     @IsOptional()
     attackSpeed:number
 
-    @IsString()
-    @IsOptional()
-    class:string
+    @IsString({each:true})
+    @IsArray()
+    @IsOptional({each:true})
+    class:string[]
 
     @IsString()
     @IsOptional()
