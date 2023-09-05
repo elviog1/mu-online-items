@@ -10,6 +10,10 @@ export class Item{
     
     @Prop()
     set:string;
+    
+    @Prop()
+    setImage:string;
+
 
     @Prop()
     type:string;

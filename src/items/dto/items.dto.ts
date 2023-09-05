@@ -60,7 +60,12 @@ export class CreateItemDto{
     class:string[]
 
     @IsString()
+    @IsNotEmpty()
     set:string;
+    
+    @IsString()
+    @IsNotEmpty()
+    setImage:string;
 
     @IsNumber()
     @IsNotEmpty()
@@ -123,7 +128,11 @@ export class UpdateItemDto{
 
     @IsString()
     @IsOptional()
-    set:string;
+    set:string; 
+    
+    @IsString()
+    @IsOptional()
+    setImage:string;
 
     @IsNumber()
     @IsOptional()

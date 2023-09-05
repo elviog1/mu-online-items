@@ -1,6 +1,7 @@
 export interface Item {
     name: string;
     set:string;
+    setImage:string;
     level: number;
     str: number;
     agi:number;
