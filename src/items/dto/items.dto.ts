@@ -21,6 +21,10 @@ export class CreateItemDto{
     @IsString()
     name: string;
     
+    @IsNotEmpty()
+    @IsString()
+    character: string;
+    
     @IsNumber()
     level: number;
     
@@ -86,6 +90,10 @@ export class UpdateItemDto{
     @IsString()
     @IsOptional()
     name:string;
+    
+    @IsString()
+    @IsOptional()
+    character:string;
 
     @IsNumber()
     @IsOptional()

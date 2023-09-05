@@ -7,6 +7,9 @@ export type ItemDocument = HydratedDocument<Item>
 export class Item{
     @Prop()
     name:string;
+
+    @Prop()
+    character:string;
     
     @Prop()
     set:string;
